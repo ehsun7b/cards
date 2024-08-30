@@ -50,3 +50,43 @@ func Deal(d Deck, handSize int) (hand Deck, remainingDeck Deck, err error) {
 
 	return hand, remainingDeck, nil
 }
+
+func RemoveCards(d Deck, cardsToRemove Deck) Deck {
+	toRemoveMap := make(map[Card]bool)
+	for _, card := range cardsToRemove {
+		toRemoveMap[card] = true
+	}
+
+	var remainingDeck Deck
+	for _, card := range d {
+		if !toRemoveMap[card] {
+			remainingDeck = append(remainingDeck, card)
+		}
+	}
+
+	return remainingDeck
+}
+
+// with receiver versions
+
+func (d *Deck) Shuffle(r *rand.Rand) {
+	shuffled := Shuffle(*d, r)
+	*d = shuffled
+}
+
+func (d *Deck) Deal(handSize int) (hand Deck, err error) {
+	hand, remainingDeck, err := Deal(*d, handSize)
+	if err != nil {
+		return nil, err
+	}
+
+	*d = remainingDeck
+
+	return hand, nil
+}
+
+func (d *Deck) RemoveCards(cardsToRemove Deck) {
+	remainingDeck := RemoveCards(*d, cardsToRemove)
+
+	*d = remainingDeck
+}

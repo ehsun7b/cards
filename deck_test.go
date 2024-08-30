@@ -163,3 +163,29 @@ func TestDealHandSizeTooSmall(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveCard(t *testing.T) {
+	deck := NewDeck(true) // A deck with jokers
+
+	cardsToRemove := Deck{
+		{Suit: JokerSuit, Rank: Joker1Rank},
+		{Suit: JokerSuit, Rank: Joker2Rank},
+	}
+
+	remainingDeck := RemoveCard(deck, cardsToRemove)
+
+	// Verify that the remaining deck does not contain the removed cards
+	for _, card := range cardsToRemove {
+		for _, remainingCard := range remainingDeck {
+			if card == remainingCard {
+				t.Errorf("Expected card %v to be removed, but it was found in the remaining deck", card)
+			}
+		}
+	}
+
+	// Verify the length of the remaining deck
+	expectedLength := len(deck) - len(cardsToRemove)
+	if len(remainingDeck) != expectedLength {
+		t.Errorf("Expected remaining deck length to be %d, but got %d", expectedLength, len(remainingDeck))
+	}
+}
