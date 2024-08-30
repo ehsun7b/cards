@@ -1,4 +1,3 @@
-
 # Cards: A GoLang Library for Playing Card Decks
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/ehsun7b/cards.svg)](https://pkg.go.dev/github.com/ehsun7b/cards)
@@ -47,7 +46,7 @@ go get github.com/ehsun7b/cards
 
 Here's a quick example of how to use **Cards** to create, shuffle, and deal a deck of cards:
 
-\```go
+```go
 package main
 
 import (
@@ -86,7 +85,7 @@ func main() {
         fmt.Println(card)
     }
 }
-\```
+```
 
 ### Creating Custom Decks
 
@@ -113,8 +112,8 @@ The `Deal` function returns an error if the hand size is invalid (too large or n
 handSize := 60
 hand, remainingDeck, err := cards.Deal(deck, handSize)
 if err != nil {
-    fmt.Println("Error:", err)
-    // Handle error (e.g., retry with a valid hand size)
+fmt.Println("Error:", err)
+// Handle error (e.g., retry with a valid hand size)
 }
 \```
 
