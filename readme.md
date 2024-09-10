@@ -36,9 +36,9 @@ This library is designed with flexibility in mind, making it perfect for develop
 
 To install the library, use `go get`:
 
-\```bash
+```bash
 go get github.com/ehsun7b/cards
-\```
+```
 
 ## Usage
 

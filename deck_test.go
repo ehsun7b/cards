@@ -172,7 +172,7 @@ func TestRemoveCard(t *testing.T) {
 		{Suit: JokerSuit, Rank: Joker2Rank},
 	}
 
-	remainingDeck := RemoveCard(deck, cardsToRemove)
+	remainingDeck := RemoveCards(deck, cardsToRemove)
 
 	// Verify that the remaining deck does not contain the removed cards
 	for _, card := range cardsToRemove {
